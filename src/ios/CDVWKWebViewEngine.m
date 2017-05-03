@@ -564,9 +564,9 @@ static void * KVOContext = &KVOContext;
     }
 }
 
-#pragma mark WKNavigationDelegate implementation
+#pragma mark Keyboard implementation
 
-- (void) onKeyboardWillHide:(id)sender
+- (void)onKeyboardWillHide:(id)sender
 {
     NSLog(@"CDVWKWebViewEngine: onKeyboardWillHide (restoring size)");
     CGRect frame = [[UIScreen mainScreen] bounds];
@@ -575,24 +575,24 @@ static void * KVOContext = &KVOContext;
     self.closingkeyboard = YES;
 }
 
-- (void) onKeyboardDidHide:(id)sender
+- (void)onKeyboardDidHide:(id)sender
 {
     NSLog(@"CDVWKWebViewEngine: onKeyboardDidHide");
 }
 
-- (void) onKeyboardDidShow:(id)sender
+- (void)onKeyboardDidShow:(id)sender
 {
     NSLog(@"CDVWKWebViewEngine: onKeyboardDidShow");
 }
 
-- (void) onKeyboardWillShow:(NSNotification *)note
+- (void)onKeyboardWillShow:(NSNotification *)note
 {
     NSLog(@"CDVWKWebViewEngine: onKeyboardWillShow");
     self.closingkeyboard = NO;
     [[_engineWebView scrollView] setContentInset:UIEdgeInsetsZero];
 }
 
-- (void) onKeyboardDidFrame:(NSNotification *)note
+- (void)onKeyboardDidFrame:(NSNotification *)note
 {
     if (!self.closingkeyboard) {
         NSLog(@"CDVWKWebViewEngine: onKeyboardDidFrame");
